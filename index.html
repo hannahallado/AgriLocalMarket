@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AgriLocal - Connecting local farmers with conscious consumers. Shop fresh, organic, and locally produced goods directly from farmers.">
+  <meta name="keywords" content="local produce, organic farming, farmers market, fresh vegetables, local agriculture">
+  <title>AgriLocal Market</title>
+  <link rel="icon" type="image/png" href="splashscreen.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto+Slab:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-green: #3BB77E;
+      --dark-green: #2E7D32;
+      --light-green: #E8F5E9;
+      --accent-orange: #FF6B35;
+      --text-dark: #010F1C;
+      --text-gray: #666;
+      --bg-light: #F7F8FA;
+      --white: #ffffff;
+      --nav-height: 86px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .hero-header-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      padding: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .hero-header-wrap.scrolled {
+      padding: 0;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-nav {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 32px;
+      min-height: var(--nav-height);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .hero-header-wrap.scrolled .hero-nav {
+      border-radius: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero {
+      height: 100vh;
+      position: relative;
+      background: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)),
+                  url('assets/images/landingpage.jpg') center center / cover no-repeat;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .logo-img {
+      margin-left: 30px;
+      height: 45px;
+      width: auto;
+    }
+
+    .brand-name {
+      font-family: 'Roboto Slab', serif;
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--dark-green);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      margin-left: auto;
+      padding-right: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .nav-links a {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark-green);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-green);
+    }
+
+    .hero-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 140px 64px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      color: #fff;
+      text-shadow: 0 3px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-inner h1 {
+      font-size: clamp(2.9rem, 6vw, 5.6rem);
+      line-height: 0.95;
+      font-weight: 800;
+      margin-bottom: 26px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-inner p {
+      max-width: 620px;
+      font-size: 1.18rem;
+      line-height: 1.65;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+
+    .hero-main-btn {
+      background: #9a3718;
+      color: #fff;
+      border: none;
+      border-radius: 18px;
+      padding: 18px 32px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .hero-main-btn:hover {
+      background: #842c12;
+      transform: translateY(-1px);
+    }
+
+    section {
+      padding: 5rem 2rem;
+      scroll-margin-top: 100px; 
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .features {
+      background: var(--bg-light);
+    }
+
+    .feature-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3em;
+      align-items: center;
+      justify-items: center;
+      margin-bottom: 3rem;
+      padding: 3rem 0;
+    }
+
+    .feature-showcase.reverse {
+      direction: rtl;
+    }
+
+    .feature-showcase.reverse > * {
+      direction: ltr;
+    }
+
+    .feature-content {
+      padding: 2rem;
+    }
+
+    .feature-content h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--dark-green);
+    }
+
+    .feature-content p {
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      line-height: 1.8;
+    }
+
+    .feature-image {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      margin: 0 auto;
+    }
+
+    .feature-image:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .screenshot-placeholder {
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .about {
+      background: var(--light-green);
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--dark-green);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .management {
+      background: white;
+      padding: 5rem 2rem;
+    }
+
+    .management-intro {
+      max-width: 800px;
+      margin: 0 auto 3rem auto;
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem 1.8rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      flex: 1;
+      min-width: 220px;
+      max-width: 280px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(59, 183, 126, 0.2);
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.06);
+      border-color: var(--primary-green);
+    }
+
+    .team-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--dark-green);
+      margin-bottom: 0.5rem;
+    }
+
+    .team-role {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--primary-green);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.75rem;
+    }
+
+    .team-bio {
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+
+    .footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 3rem 2rem 1.5rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary-green);
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--primary-green);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    @media (max-width: 980px) {
+      .hero-nav {
+        padding: 0 20px;
+        min-height: 76px;
+      }
+      :root {
+        --nav-height: 76px;
+      }
+      section {
+        scroll-margin-top: 90px;
+      }
+      .nav-right {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .nav-links {
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .hero-content {
+        padding: 70px 28px 40px;
+      }
+      .feature-showcase,
+      .feature-showcase.reverse {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        direction: ltr;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .team-grid {
+        gap: 1.5rem;
+      }
+      .team-card {
+        min-width: 240px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 20px;
+        min-height: auto;
+      }
+      :root {
+        --nav-height: auto;
+      }
+      section {
+        scroll-margin-top: 80px;
+      }
+      .nav-right {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding-right: 0;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+      }
+      .hero-inner h1 {
+        line-height: 1.02;
+      }
+      .screenshot-placeholder {
+        height: 350px;
+      }
+      .team-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .team-card {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .hero {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .nav-links a.active {
+      color: var(--primary-green);
+      border-bottom: 2px solid var(--primary-green);
+      padding-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-header-wrap">
+      <header class="hero-nav">
+        <div class="nav-left">
+          <img src="assets/images/splashscreen.png" alt="AgriLocal Logo" class="logo-img">
+          <span class="brand-name"></span>
+        </div>
+        <div class="nav-right">
+          <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#management">Company</a>
+          </nav>
+        </div>
+      </header>
+    </div>
+    
+    <div class="hero-content">
+      <div class="hero-inner">
+        <h1>Organic and Local produced</h1>
+        <p>Fresh, local, and seasonal. Shop directly from farmers and artisans for just-picked produce, homemade goods, and handmade crafts.</p>
+        <a href="https://snack.expo.dev/@hannahallado/agrilocal_project" target="_blank" class="hero-main-btn">Open an Account</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title">Why Choose AgriLocal?</h2>
+      <p class="section-subtitle">Discover the features that make AgriLocal the best platform for connecting with local farmers and fresh produce</p>
+      
+      <div class="feature-showcase">
+        <div class="feature-content">
+          <h3>Interactive Map</h3>
+          <p>Discover nearby farms and vendors with our interactive map feature. Find the freshest produce closest to you with real-time location tracking.</p>
+        </div>
+          <img src="assets/images/maphomescreen.png" alt="Screenshot: Interactive Map View" style="width:60%; height: auto;">
+      </div>
+
+      <div class="feature-showcase reverse">
+        <div class="feature-content">
+          <h3>Dual User Roles</h3>
+          <p>Separate experiences for buyers and vendors. Optimized interfaces for both shopping and selling with role-specific features.</p>
+        </div>
+          <img src="assets/images/roleselectionscreen.png" alt="Screenshot: Dual User Roles" style="width: 60%; height: auto;">
+      </div>
+
+      <div class="feature-showcase">
+        <div class="feature-content">
+          <h3>Vendor Dashboard</h3>
+          <p>Comprehensive tools for farmers to manage inventory, track orders, and grow their business with real-time analytics and insights.</p>
+        </div>
+          <img src="assets/images/vendordashboardscreen.png" alt="Screenshot: Vendor Dashboard" style="width:60%; height: auto;">
+      </div>
+
+      <div class="feature-showcase reverse">
+        <div class="feature-content">
+          <h3>Favorites</h3>
+          <p>Save your favorite vendors and products for quick access. Never lose track of your preferred farmers and get notified when they add new products.</p>
+        </div>
+          <img src="assets/images/favoritesscreen.png" alt="Screenshot: Favorites & Wishlist" style="width: 60%; height: auto;">
+      </div>
+
+      <div class="feature-showcase">
+        <div class="feature-content">
+          <h3>Advanced Search</h3>
+          <p>Browse and search for fresh local produce with filters. Find exactly what you need with category, price, and location filters.</p>
+        </div>
+          <img src="assets/images/searchscreen.png" alt="Screenshot: Search & Browse" style="width: 60%; height: auto;">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About AgriLocal</h2>
+          <p>AgriLocal is a mobile marketplace that bridges the gap between local agricultural vendors and conscious consumers. We believe in supporting sustainable local food systems and empowering farmers to reach customers directly.</p>
+          <p>Built with cutting-edge technology including React Native, Expo, and Supabase, AgriLocal offers a seamless experience for both buyers and vendors, promoting healthier communities and sustainable agriculture.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="management" class="management">
+    <div class="container">
+      <h2 class="section-title">About OrigoTech</h2>
+      <div class="management-intro">
+        <p>We believe that technology should be a force for real change. It should be easy to use, open to everyone, and made to make life easier for those who need it the most.
+        <br><br>The OrigoTech Team is responsible for the development and management of AgriLocal, ensuring a seamless experience for both buyers and vendors.
+        </p>
+      </div>
+      
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-name">Hannah Grace S. Allado</div>
+          <div class="team-role">Product & Strategy</div>
+          <div class="team-bio">Driving product vision and marketplace growth with a focus on sustainable commerce.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Alyhanna Azel Pineda</div>
+          <div class="team-role">Technology & Innovation</div>
+          <div class="team-bio">Leading engineering and platform architecture to deliver seamless digital experiences.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Babylin B. <br> Sebongga</div>
+          <div class="team-role">Operations & Compliance</div>
+          <div class="team-bio">Ensuring operational excellence and regulatory integrity across all markets.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact" class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>AgriLocal</h3>
+        <p>Connecting local farmers with conscious consumers for a sustainable future.</p>
+        <p style="margin-top: 1rem;">© 2026 AgriLocal. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Made with love for Local Agriculture | Version 2.0.0</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          const navBar = document.querySelector('.hero-nav');
+          const navHeight = navBar ? navBar.offsetHeight : 86;
+          const extraOffset = 24;
+          const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - extraOffset;
+          
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+          
+          history.pushState(null, null, targetId);
+          
+          document.querySelectorAll('.nav-links a').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+    
+    window.addEventListener('load', function() {
+      if (window.location.hash) {
+        const targetElement = document.querySelector(window.location.hash);
+        if (targetElement) {
+          setTimeout(() => {
+            const navBar = document.querySelector('.hero-nav');
+            const navHeight = navBar ? navBar.offsetHeight : 86;
+            const extraOffset = 24;
+            const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - extraOffset;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }, 100);
+        }
+      }
+      
+      function updateActiveLinkOnScroll() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const scrollPosition = window.scrollY + 120;
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${sectionId}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', updateActiveLinkOnScroll);
+      updateActiveLinkOnScroll();
+    });
+    
+    document.querySelectorAll('a[href^="#"]:not(.nav-links a)').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          const navBar = document.querySelector('.hero-nav');
+          const navHeight = navBar ? navBar.offsetHeight : 86;
+          const extraOffset = 10;
+          const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - extraOffset;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+          history.pushState(null, null, targetId);
+        }
+      });
+    });
+    
+    window.addEventListener('scroll', function() {
+      const headerWrap = document.querySelector('.hero-header-wrap');
+      if (window.scrollY > 10) {
+        headerWrap.classList.add('scrolled');
+      } else {
+        headerWrap.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
